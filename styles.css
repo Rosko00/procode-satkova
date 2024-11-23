@@ -37,6 +37,13 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.answer-input:focus {
+    border-color: #4CAF50;
+    outline: none;
 }
 
 .submit-btn, .reset-btn {
@@ -56,6 +63,23 @@ body {
 .feedback {
     margin: 20px 0;
     font-size: 18px;
+    font-weight: bold;
+}
+
+.feedback span {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.feedback.correct {
+    color: green;
+    background-color: #d4edda;
+}
+
+.feedback.incorrect {
+    color: red;
+    background-color: #f8d7da;
 }
 
 .statistics p {
@@ -65,4 +89,26 @@ body {
 
 .reset-container {
     margin-top: 20px;
+}
+
+.end-message {
+    display: none;
+    background-color: #f0f0f0;
+    border: 2px solid #4CAF50;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.end-message p {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.end-message .final-feedback {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #555;
 }

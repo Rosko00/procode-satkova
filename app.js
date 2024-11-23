@@ -24,15 +24,17 @@ function stopTimer() {
 
 // Generovanie nového príkladu
 function generateProblem() {
-    const a = Math.floor(Math.random() * 10);
-    const b = Math.floor(Math.random() * 10);
+    let maxNumber = 10 * Math.ceil(questionCount / 10); // Každých 10 otázok sa zvyšuje maximum čísiel
+    let a = Math.floor(Math.random() * maxNumber);
+    let b = Math.floor(Math.random() * maxNumber);
     const operator = Math.random() > 0.5 ? '+' : '-';
 
+    // Eliminovať záporné výsledky
     if (operator === '-' && a < b) {
-        currentProblem = { a: b, b: a, operator };
-    } else {
-        currentProblem = { a, b, operator };
+        [a, b] = [b, a];
     }
+
+    currentProblem = { a, b, operator };
 
     document.getElementById("mathProblem").innerText = `${currentProblem.a} ${operator} ${currentProblem.b} = ?`;
 }
@@ -66,16 +68,22 @@ function checkAnswer() {
 // Ďalšia otázka alebo ukončenie testu
 function nextQuestion() {
     questionCount++;
-    document.getElementById("answerInput").value = "";
 
-    if (questionCount >= 10) {
+    // Ukončenie testu po 10 nesprávnych odpovediach
+    if (incorrectCount >= 10) {
         stopTimer();
-        document.getElementById("feedbackMessage").innerText = "Koniec, dokončili ste všetky otázky!";
+        document.getElementById("feedbackMessage").innerText = "Koniec, dosiahli ste 10 nesprávnych odpovedí!";
         document.getElementById("mathProblem").innerText = "";
         return;
     }
 
-    generateProblem();
+    document.getElementById("answerInput").value = "";
+
+    if (questionCount % 10 === 0) {
+        generateProblem(); // Generovať nový príklad, ak je to 10. otázka
+    } else {
+        generateProblem(); // Inak generovať nový príklad s rovnakým maximom
+    }
 }
 
 // Reštartovanie testu
