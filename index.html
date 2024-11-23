@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Matematika pre deti</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Matematika</h1>
+        <p>"Matematické dobrodružstvo s pani učiteľkou Šatkovou"</p>
+    </div>
+
+    <div class="problem-container">
+        <div class="problem" id="mathProblem">
+            <!-- Matematický príklad -->
+        </div>
+
+        <input class="answer-input" id="answerInput" placeholder="Zadajte odpoveď" type="number"/>
+        <button class="submit-btn" id="submitAnswerBtn">Odoslať odpoveď</button>
+    </div>
+
+    <div class="feedback">
+        <span id="feedbackMessage"></span>
+    </div>
+
+    <div class="statistics">
+        <p>Počet správnych odpovedí: <span id="correctCount">0</span></p>
+        <p>Počet nesprávnych odpovedí: <span id="incorrectCount">0</span></p>
+        <p>Čas: <span id="totalTime">0</span> sekúnd</p>
+    </div>
+
+    <div class="reset-container">
+        <button class="reset-btn" id="repeatTestBtn">Opakovať test</button>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
